@@ -1,0 +1,37 @@
+{
+  "name": "instanews-app-project",
+  "version": "1.0.0",
+  "description": "A one-page, responsive website that allows a user to filter top news story categories via the New York Times API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yongmin Kim <yongmin86k@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-eslint": "^6.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-terser": "^1.2.0"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yongmin86k/Instanews-App-Project.git"
+  },
+  "keywords": [
+    "jQuery",
+    "Ajax",
+    "Javascript",
+    "CSS3",
+    "HTML",
+    "Gulp"
+  ],
+  "bugs": {
+    "url": "https://github.com/yongmin86k/Instanews-App-Project/issues"
+  },
+  "homepage": "https://github.com/yongmin86k/Instanews-App-Project#readme"
+}

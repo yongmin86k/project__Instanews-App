@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 80px;
+}
+body {
+    display: flex;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
