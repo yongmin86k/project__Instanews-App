@@ -5,15 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Instanews - NYT News Reader</title>
+    <link rel="stylesheet" href="./build/css/reset.min.css">
     <link rel="stylesheet" href="./fonts/stylesheet.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css" integrity="sha384-i1LQnF23gykqWXg6jxC2ZbCbUMxyw5gLZY6UiUS98LYV5unm8GWmfkIS6jqJfb4E" crossorigin="anonymous">
-    <link rel="stylesheet" href="./build/css/style.min.css">
+    <link rel="stylesheet" href="./build/css/style.min.css"> 
 </head>
 <body>
-    <h1>Hello world</h1>
+    <section class="page">
+
+        <img class="nytLogo" src="./images/nyt-logo.svg" alt="Logo">
+        
+        <p class="pageText">Choose a section:</p>
+
+        <select id="jsCustomSelect" class="customSelect">
+            <option value="home">Home</option>
+            <option value="arts">Arts</option>
+            <option value="business">Business</option>
+            <option value="sports">Sports</option>
+            <option value="technology">Technology</option>
+            <option value="fashion">Fashion</option>
+        </select>
+
+    </section>
+
+    <footer>
+        <p>© Copyright 2016 <span class="capitalize">Instanews</span></p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="./build/js/customSelect.min.js"></script>
     <script src="./build/js/main.min.js"></script>
 </body>
 </html>

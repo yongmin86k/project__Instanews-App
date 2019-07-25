@@ -1,7 +1,7 @@
-console.log('hello world');
+$(function () { 
+    
 
-function sayHello(){
-    return 'Hello world'
-}
+ }) // end of document ready
 
-alert('Wrong');
+ 
+ 
