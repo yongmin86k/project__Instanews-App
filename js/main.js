@@ -1,4 +1,8 @@
-$(function () { 
+import CustomSelect from "./customSelect";
+
+CustomSelect();
+
+$(function () {     
     const $base = $('#jsCustomSelect');
     const $customSelect = $('.selectDefaultBox');
     const $optWrapper = $('.selectContainer');
@@ -35,7 +39,7 @@ function loadContents(section, $page) {
     
     // Prevent calling ajax function twice if the keyword is same
     if ( $articleList.hasClass(section) ) {
-        console.error('Selected same class');
+        console.error('Choosed the same section');
         return
     }
 
@@ -100,6 +104,3 @@ function insertArticles(data, $articleList) {
         }
     });
 }
-
- 
- 
