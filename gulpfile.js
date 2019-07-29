@@ -6,10 +6,9 @@ const gulp = require("gulp"),
   autoprefixer = require("gulp-autoprefixer"),
   eslint = require('gulp-eslint');
 
-
 gulp.task("watch", function() {
-  gulp.watch("js/*.js", gulp.series("scripts"));
-  gulp.watch("css/*.css", gulp.series("styles"));
+  gulp.watch("js/**/*.js", gulp.series("scripts"));
+  gulp.watch("css/**/*.css", gulp.series("styles"));
   gulp.watch("*.html").on("change", browserSync.reload);
 });
 

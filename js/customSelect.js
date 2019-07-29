@@ -23,7 +23,6 @@ function customizeSelect(element){
                             </div>`;
         $container.append($optionHtml);
     });
-
     placeCustomSelect($container);
 }
 
@@ -34,7 +33,7 @@ function placeCustomSelect($ele) {
     let topPosition = getTopPos($object);
     let bottomPosition = getBottomPos($parentEle, $object);
     
-    rePositionSelect($ele, topPosition, bottomPosition);
+    rePositionSelect($ele, $parentEle, topPosition, bottomPosition);
     resizeWindow($ele, $parentEle, $object, topPosition, bottomPosition);
     clickSelect($ele, $object);
  }
@@ -50,13 +49,19 @@ function getBottomPos($base, $object){
 }
 
 // Reposition the option container
-function rePositionSelect($ele, topPosition, bottomPosition){
-    if ($(window).width() < 600 ){
+function rePositionSelect($ele, $parentEle, topPosition, bottomPosition){
+    if ($(window).width() < 600 && $parentEle.height() > 300 ){
         // If mobile, place the container at the same bottom with the custom select box
-        $ele.css('bottom', bottomPosition);
+        $ele.css({
+            'top': 'initial',
+            'bottom': bottomPosition
+        });
     } else {
         // If desktop, place the container at the same top with the custom select box
-        $ele.css('top', topPosition);
+        $ele.css({
+            'top': topPosition,
+            'bottom': 'initial'
+        });
     }
 }
 
@@ -77,10 +82,10 @@ function rePositionSelect($ele, topPosition, bottomPosition){
 
 // Re-locate the option container when the window size changes
  function resizeWindow($ele, $parentEle, $object, topPosition, bottomPosition) { 
-    $(window).on('resize', function(){
+    $(window).on('click resize', function(){
         topPosition = getTopPos($object);
         bottomPosition = getBottomPos($parentEle, $object);
 
-        rePositionSelect($ele, topPosition, bottomPosition);
+        rePositionSelect($ele, $parentEle, topPosition, bottomPosition);
     });
 }

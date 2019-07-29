@@ -15,89 +15,162 @@ body {
     flex-direction: column;  
 }
 
+img {
+    width: 100%;
+}
+
 .page {
-    width: 100vw; height:90vh;
+    width: 100vw; 
+    height:90vh;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+    .blur {
+        filter: blur(10px);
+    }
     .nytLogo {
-        width: 68%;
+        width: auto;
+        height: 40%;
     }
     .pageText {
         margin: 2rem 0 1.5rem 0;
         font-size: 1rem;
     }
 
-    /*
-    CSS :: customSelect.js
-    customize the select element of index.html
-    */
-    .customSelect { display: none; }
-
-    .selectDefaultBox, .selectContainer {
-        min-width: 120px;
-        font-size: 0.8rem;
-        border-radius: 0.25rem;
+.articles {
+    display: none;
+    height: initial;
+}
+    .failMessage {
+        padding: 1rem;
+        text-align: center;
+        line-height: 1.4;
     }
-    .selectDefaultBox { 
-        position: relative;
+        .failMessage i {
+            display: block;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+    .articles ul {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #ffffff;
-        color:  #000000;
-        padding: 0.8rem 0.6rem;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
-    .selectDefaultBox::after {
-        position: relative;
-        content: '\f078';
-        font-family: 'FontAwesome';
-    }
-    .selectDefaultBox, .optionText {
-        cursor: pointer;
-    }
-
-    .selectContainer {
-        visibility: hidden;
-        position: absolute;
-        background: rgba(0,0,0,0.92);
-        box-shadow: 0 0 48px rgba(255,255,255,0.5);
-    }
-    .selectContainer.show {
-        z-index: 100;
-        visibility: visible;
-    }
-        .optionContainer { position: relative; }
-        .optionContainer::after {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            content: '';
-            width: 100%;
-            height: 1px;
-            background-color: rgba(255,255,255,0.3);
+        .articles ul li {
+            position: relative;
+            
         }
-        .optionContainer:last-child::after {
-            display: none;
-        }
-            .optionContainer a {
-                text-decoration: none;
+            .articleContainer {
+                position: relative;
+                height: 100vw;
+                background-size: cover;
+                background-position: 50% 50%;
             }
-                .optionText {
-                    font-size: 0.8rem;
-                    padding: 0.8rem 0.6rem;
-                    color: #ffffff;
+                .abstract {
+                    position: absolute;
+                    bottom: 0;
+                    background-color: rgba(0,0,0,0.48);
+                    color: white;
+                    cursor: pointer;
+                    padding: 0.8rem;
+                    line-height: 1.4;
                 }
 
-
 footer {
-width: 100%;
-height: 10vh;
-text-align: center;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c2c2c2;
 }
     .capitalize {
-    text-transform: uppercase;
+        text-transform: uppercase;
     }
+
+.loader {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    left: 0; top: 0;
+    position: fixed;
+    background-color: rgba(0,0,0,0.48);
+}
+    .loadContents {
+        display: flex;
+        width: 100%; height: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+        .loadSpinner {
+            width: auto;
+            height: 36%;
+        }
+        .loadTxt {
+            margin-top: 12px;
+        }
+
+/*
+CSS :: customSelect.js
+customize the select element of index.html
+*/
+.customSelect { display: none; }
+
+.selectDefaultBox, .selectContainer {
+    min-width: 120px;
+    font-size: 0.8rem;
+    border-radius: 0.25rem;
+}
+.selectDefaultBox { 
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    color:  #000000;
+    padding: 0.8rem 0.6rem;
+}
+.selectDefaultBox::after {
+    position: relative;
+    content: '\f078';
+    font-family: 'FontAwesome';
+}
+.selectDefaultBox, .optionText {
+    cursor: pointer;
+}
+
+.selectContainer {
+    visibility: hidden;
+    position: absolute;
+    background: rgba(0,0,0,0.92);
+    box-shadow: 0 0 48px rgba(255,255,255,0.5);
+}
+.selectContainer.show {
+    z-index: 100;
+    visibility: visible;
+}
+    .optionContainer { position: relative; }
+    .optionContainer::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255,255,255,0.3);
+    }
+    .optionContainer:last-child::after {
+        display: none;
+    }
+        .optionContainer a {
+            text-decoration: none;
+        }
+            .optionText {
+                font-size: 0.8rem;
+                padding: 0.8rem 0.6rem;
+                color: #ffffff;
+            }
