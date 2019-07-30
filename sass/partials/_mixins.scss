@@ -10,6 +10,11 @@
     }
 }
 
+@mixin desktopSectionLayout {
+    justify-content: left;
+    padding-left: 10vw;
+}
+
 %pageDefault {
     width: 100vw; 
     height:90vh;
