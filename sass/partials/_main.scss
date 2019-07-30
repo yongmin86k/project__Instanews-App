@@ -7,10 +7,10 @@ html {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;;
-    color: #ffffff;
+    color: $color-main-font;
 }
 body {
-    background-color: #000000;
+    background-color: $color-main-bg;
     display: flex;
     flex-direction: column;  
 }
@@ -19,15 +19,12 @@ img {
     width: 100%;
 }
 
-.page {
-    width: 100vw; 
-    height:90vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+.menu {
+    @extend %pageDefault;
+    @include tablet {
+        flex-direction: row;
+    }
+
     .blur {
         filter: blur(10px);
     }
@@ -35,39 +32,61 @@ img {
         width: auto;
         height: 40%;
     }
-    .pageText {
-        margin: 2rem 0 1.5rem 0;
-        font-size: 1rem;
-    }
+    .menuContainer {
+        position: relative;
+        @include tablet {
+            margin-left: 3rem;
+        }
+        .pageText {
+            margin: 2rem 0 1.5rem 0;
+            font-size: 1rem;
+            @include tablet {
+                margin: 0 0 1rem 0;
+            }
+        }
+    }       
+}
+    
 
 .articles {
+    @extend %pageDefault;
     display: none;
     height: initial;
-}
+
     .failMessage {
         padding: 1rem;
         text-align: center;
         line-height: 1.4;
-    }
-        .failMessage i {
+
+        i {
             display: block;
             font-size: 3rem;
             margin-bottom: 1rem;
         }
-    .articles ul {
+    }
+        
+    ul {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-    }
-        .articles ul li {
+        @include tablet {
+            display: grid;
+            flex-direction: initial;
+            flex-wrap: unset;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        li {
             position: relative;
-            
         }
             .articleContainer {
                 position: relative;
                 height: 100vw;
                 background-size: cover;
                 background-position: 50% 50%;
+                @include tablet {
+                    height: 64vw;
+                }
             }
                 .abstract {
                     position: absolute;
@@ -78,6 +97,10 @@ img {
                     padding: 0.8rem;
                     line-height: 1.4;
                 }
+    }
+        
+}
+    
 
 footer {
     width: 100%;
@@ -85,7 +108,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #c2c2c2;
+    color: $color-medium-grey;
 }
     .capitalize {
         text-transform: uppercase;
@@ -98,21 +121,33 @@ footer {
     left: 0; top: 0;
     position: fixed;
     background-color: rgba(0,0,0,0.48);
-}
+
     .loadContents {
         display: flex;
         width: 100%; height: 100%;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-    }
+
         .loadSpinner {
             width: auto;
             height: 36%;
+            @include tablet {
+                width: 10rem;
+                height: auto;
+            }
         }
         .loadTxt {
-            margin-top: 12px;
+            margin-top: 0.8rem;
+            @include tablet {
+                margin-top: 1rem;
+                font-size: 1.5rem;
+            }
         }
+    }
+        
+}
+    
 
         
 /*
@@ -122,6 +157,7 @@ customize the select element of index.html
 .customSelect { display: none; }
 
 .selectDefaultBox, .selectContainer {
+    width: 100%;
     min-width: 120px;
     font-size: 0.8rem;
     border-radius: 0.25rem;
@@ -131,8 +167,8 @@ customize the select element of index.html
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
-    color:  #000000;
+    background-color: $color-main-font;
+    color:  $color-main-bg;
     padding: 0.8rem 0.6rem;
 }
 .selectDefaultBox::after {
@@ -173,5 +209,5 @@ customize the select element of index.html
             .optionText {
                 font-size: 0.8rem;
                 padding: 0.8rem 0.6rem;
-                color: #ffffff;
+                color: $color-main-font;
             }

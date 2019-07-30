@@ -45,6 +45,48 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.menu, .articles {
+  width: 100vw;
+  height: 90vh;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/fonts/OpenSans-Light.woff2") format("woff2"), url("/fonts/OpenSans-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/fonts/OpenSans-Bold.woff2") format("woff2"), url("/fonts/OpenSans-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/fonts/OpenSans-BoldItalic.woff2") format("woff2"), url("/fonts/OpenSans-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url("/fonts/OpenSansLight-Italic.woff2") format("woff2"), url("/fonts/OpenSansLight-Italic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic; }
+
 * {
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -69,78 +111,82 @@ body {
 img {
   width: 100%; }
 
-.page {
-  width: 100vw;
-  height: 90vh;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
+@media only screen and (min-width: 600px) {
+  .menu {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; } }
 
-.blur {
+.menu .blur {
   -webkit-filter: blur(10px);
           filter: blur(10px); }
 
-.nytLogo {
+.menu .nytLogo {
   width: auto;
   height: 40%; }
 
-.pageText {
-  margin: 2rem 0 1.5rem 0;
-  font-size: 1rem; }
+.menu .menuContainer {
+  position: relative; }
+  @media only screen and (min-width: 600px) {
+    .menu .menuContainer {
+      margin-left: 3rem; } }
+  .menu .menuContainer .pageText {
+    margin: 2rem 0 1.5rem 0;
+    font-size: 1rem; }
+    @media only screen and (min-width: 600px) {
+      .menu .menuContainer .pageText {
+        margin: 0 0 1rem 0; } }
 
 .articles {
   display: none;
   height: initial; }
-
-.failMessage {
-  padding: 1rem;
-  text-align: center;
-  line-height: 1.4; }
-
-.failMessage i {
-  display: block;
-  font-size: 3rem;
-  margin-bottom: 1rem; }
-
-.articles ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
-
-.articles ul li {
-  position: relative; }
-
-.articleContainer {
-  position: relative;
-  height: 100vw;
-  background-size: cover;
-  background-position: 50% 50%; }
-
-.abstract {
-  position: absolute;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.48);
-  color: white;
-  cursor: pointer;
-  padding: 0.8rem;
-  line-height: 1.4; }
+  .articles .failMessage {
+    padding: 1rem;
+    text-align: center;
+    line-height: 1.4; }
+    .articles .failMessage i {
+      display: block;
+      font-size: 3rem;
+      margin-bottom: 1rem; }
+  .articles ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    @media only screen and (min-width: 600px) {
+      .articles ul {
+        display: grid;
+        -webkit-box-orient: initial;
+        -webkit-box-direction: initial;
+            -ms-flex-direction: initial;
+                flex-direction: initial;
+        -ms-flex-wrap: unset;
+            flex-wrap: unset;
+        grid-template-columns: repeat(3, 1fr); } }
+    .articles ul li {
+      position: relative; }
+    .articles ul .articleContainer {
+      position: relative;
+      height: 100vw;
+      background-size: cover;
+      background-position: 50% 50%; }
+      @media only screen and (min-width: 600px) {
+        .articles ul .articleContainer {
+          height: 64vw; } }
+    .articles ul .abstract {
+      position: absolute;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.48);
+      color: white;
+      cursor: pointer;
+      padding: 0.8rem;
+      line-height: 1.4; }
 
 footer {
   width: 100%;
@@ -167,30 +213,35 @@ footer {
   top: 0;
   position: fixed;
   background-color: rgba(0, 0, 0, 0.48); }
-
-.loadContents {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column; }
-
-.loadSpinner {
-  width: auto;
-  height: 36%; }
-
-.loadTxt {
-  margin-top: 12px; }
+  .loader .loadContents {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .loader .loadContents .loadSpinner {
+      width: auto;
+      height: 36%; }
+      @media only screen and (min-width: 600px) {
+        .loader .loadContents .loadSpinner {
+          width: 10rem;
+          height: auto; } }
+    .loader .loadContents .loadTxt {
+      margin-top: 0.8rem; }
+      @media only screen and (min-width: 600px) {
+        .loader .loadContents .loadTxt {
+          margin-top: 1rem;
+          font-size: 1.5rem; } }
 
 /*
 CSS :: customSelect.js
@@ -200,6 +251,7 @@ customize the select element of index.html
   display: none; }
 
 .selectDefaultBox, .selectContainer {
+  width: 100%;
   min-width: 120px;
   font-size: 0.8rem;
   border-radius: 0.25rem; }

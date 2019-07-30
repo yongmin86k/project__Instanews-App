@@ -52,7 +52,7 @@ export default function CustomSelect() {
     
     // Reposition the option container
     function rePositionSelect($ele, $parentEle, topPosition, bottomPosition){
-        if ($(window).width() < 600 && $parentEle.height() > 300 ){
+        if ($(window).width() < 600 && $parentEle.parent().height() > 300 ){
             // If mobile, place the container at the same bottom with the custom select box
             $ele.css({
                 'top': 'initial',

@@ -2,7 +2,7 @@ import CustomSelect from "./customSelect";
 
 CustomSelect();
 
-$(function () {     
+$(function () {
     const $base = $('#jsCustomSelect');
     const $customSelect = $('.selectDefaultBox');
     const $optWrapper = $('.selectContainer');
@@ -16,7 +16,7 @@ $(function () {
                 $base.children().eq(index).prop('selected', true);
                 $customSelect.text( $(value).text() );
 
-                loadContents(txtBase, $('#jsCustomSelect').parent());
+                loadContents(txtBase, $('#jsCustomSelect').parents('.menu'));
             }
         }); 
     });
@@ -60,7 +60,9 @@ function loadContents(section, $page) {
         setTimeout(function () {
             $('.page').removeClass('blur');
             $loader.fadeOut(aniTime);
-            $page.animate({ height: 300 }, aniTime);
+
+            resizeMenuHeight($page, aniTime);
+
             $articleList.append(failText);
             $article.fadeIn(aniTime);
         }, aniTime * 2);
@@ -71,12 +73,17 @@ function loadContents(section, $page) {
         setTimeout(function () {
             $('.page').removeClass('blur');
             $loader.fadeOut(aniTime);
-            $page.animate({ height: 300 }, aniTime);
-            $article.fadeIn(aniTime);
+            
+            resizeMenuHeight($page, aniTime);
 
+            $article.fadeIn(aniTime);
             $articleList.addClass(section);
             insertArticles(data.results, $articleList);
-        }, aniTime * 2);
+        }, aniTime * 2);  
+    });
+
+    $(window).on('resize', function(){
+        resizeMenuHeight($page, aniTime);
     });
 }
     
@@ -103,4 +110,13 @@ function insertArticles(data, $articleList) {
             $articleList.append($article);
         }
     });
+}
+
+// Resize menu section when the width of browser changes
+function resizeMenuHeight($page, aniTime) { 
+    if ( $(window).width() < 600 ){
+        $page.animate({ height: 300 }, aniTime);
+    } else {
+        $page.animate({ height: 120 }, aniTime);
+    }
 }
