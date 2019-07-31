@@ -1,4 +1,4 @@
-import CustomSelect from "./customSelect";
+import CustomSelect from './customSelect';
 
 CustomSelect();
 
@@ -93,14 +93,21 @@ function insertArticles(data, $articleList) {
         return image.multimedia.length !== 0;
     })
     $.each(isImages, function(index, value){
-        const linkURL = value.url;
-        const imageURL = $(value.multimedia).last()[0].url;
-        const abstract = value.abstract;
+        const linkURL = value.url,
+            imageURL = $(value.multimedia).last()[0].url,
+            title = value.title,
+            updatedDate = value.updated_date.slice(0,10),
+            abstract = value.abstract;
         const $article = `
                         <li>
-                            <div class="articleContainer" style="background-image: url('${imageURL}')">
-                                <a href="${linkURL}">
-                                    <div class="abstract">${abstract}</div>
+                            <div class="articleContainer">
+                                <a href="${linkURL}" target="_blank">
+                                    <div class="bgImgage" style="background-image: url('${imageURL}')"></div>
+                                    <div class="article">
+                                        <h3>${title}</h3>
+                                        <p class="articleDate">${updatedDate}</p>
+                                        <p class="abstract">${abstract}</p>
+                                    </div>
                                 </a>
                             </div>
                         </li>

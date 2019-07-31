@@ -63,6 +63,14 @@ table {
       -ms-flex-direction: column;
           flex-direction: column; }
 
+.articles ul li .articleContainer .article h3, .articles ul li .articleContainer .article .articleDate {
+  -webkit-transition: all .2s linear .2s;
+  transition: all .2s linear .2s;
+  max-height: 0;
+  margin-bottom: 0;
+  opacity: 0;
+  overflow: hidden; }
+
 @font-face {
   font-family: 'Open Sans';
   src: url("/fonts/OpenSans-Light.woff2") format("woff2"), url("/fonts/OpenSans-Light.woff") format("woff");
@@ -184,25 +192,63 @@ img {
         grid-template-columns: repeat(4, 1fr); } }
     .articles ul li {
       position: relative; }
-    .articles ul .articleContainer {
-      position: relative;
-      height: 100vw;
-      background-size: cover;
-      background-position: 50% 50%; }
-      @media only screen and (min-width: 600px) {
-        .articles ul .articleContainer {
-          height: 64vw; } }
-      @media only screen and (min-width: 1000px) {
-        .articles ul .articleContainer {
-          height: 50vh; } }
-    .articles ul .abstract {
-      position: absolute;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.48);
-      color: white;
-      cursor: pointer;
-      padding: 0.8rem;
-      line-height: 1.4; }
+      .articles ul li .articleContainer {
+        position: relative;
+        height: 100vw;
+        overflow: hidden; }
+        @media only screen and (min-width: 600px) {
+          .articles ul li .articleContainer {
+            height: 64vw; } }
+        @media only screen and (min-width: 1000px) {
+          .articles ul li .articleContainer {
+            height: 50vh; } }
+        .articles ul li .articleContainer .bgImgage {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-position: 50% 50%;
+          -webkit-transform: scale(1);
+                  transform: scale(1);
+          -webkit-transform-origin: center;
+                  transform-origin: center;
+          -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out; }
+        .articles ul li .articleContainer .article {
+          position: absolute;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, 0.48);
+          color: white;
+          cursor: pointer;
+          padding: 0.8rem;
+          line-height: 1.6;
+          min-height: 0;
+          -webkit-transition: all 0.5s ease-in-out;
+          transition: all 0.5s ease-in-out; }
+          .articles ul li .articleContainer .article h3 {
+            font-size: 1.4rem;
+            font-weight: bold; }
+          .articles ul li .articleContainer .article .articleDate {
+            font-size: 0.8rem;
+            color: #c2c2c2; }
+          .articles ul li .articleContainer .article .abstract {
+            -webkit-text-decoration: underline #c2c2c2;
+                    text-decoration: underline #c2c2c2; }
+        .articles ul li .articleContainer:hover .bgImgage {
+          -webkit-transform: scale(1.5);
+                  transform: scale(1.5); }
+        .articles ul li .articleContainer:hover .article {
+          min-height: 100%;
+          background-color: rgba(0, 0, 0, 0.72); }
+          .articles ul li .articleContainer:hover .article h3, .articles ul li .articleContainer:hover .article .articleDate {
+            max-height: 100%;
+            opacity: 1; }
+          .articles ul li .articleContainer:hover .article h3 {
+            margin-bottom: 0.8rem; }
+          .articles ul li .articleContainer:hover .article .articleDate {
+            margin-bottom: 1.5rem; }
 
 footer {
   width: 100%;
