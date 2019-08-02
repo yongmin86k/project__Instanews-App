@@ -64,6 +64,7 @@ table {
           flex-direction: column; }
 
 .articles ul li .articleContainer .article h3, .articles ul li .articleContainer .article .articleDate {
+  color: #000000;
   -webkit-transition: all .2s linear .2s;
   transition: all .2s linear .2s;
   max-height: 0;
@@ -225,7 +226,7 @@ img {
           position: absolute;
           bottom: 0;
           background-color: rgba(0, 0, 0, 0.48);
-          color: white;
+          color: #ffffff;
           cursor: pointer;
           padding: 0.8rem;
           line-height: 1.6;
@@ -236,27 +237,27 @@ img {
             font-size: 1.4rem;
             font-weight: bold; }
           .articles ul li .articleContainer .article .articleDate {
-            font-size: 0.8rem;
-            color: #c2c2c2; }
+            font-size: 0.8rem; }
           .articles ul li .articleContainer .article .abstract {
-            -webkit-text-decoration: underline #c2c2c2;
-                    text-decoration: underline #c2c2c2; }
-        .articles ul li .articleContainer:hover .bgImgage {
+            -webkit-text-decoration: underline #000000;
+                    text-decoration: underline #000000; }
+        .articles ul li .articleContainer:hover .bgImgage, .articles ul li .articleContainer a:focus .bgImgage {
           -webkit-transform: scale(1.2);
                   transform: scale(1.2); }
           @media only screen and (min-width: 1000px) {
-            .articles ul li .articleContainer:hover .bgImgage {
+            .articles ul li .articleContainer:hover .bgImgage, .articles ul li .articleContainer a:focus .bgImgage {
               -webkit-transform: scale(1.5);
                       transform: scale(1.5); } }
-        .articles ul li .articleContainer:hover .article {
+        .articles ul li .articleContainer:hover .article, .articles ul li .articleContainer a:focus .article {
           min-height: 100%;
-          background-color: rgba(0, 0, 0, 0.72); }
-          .articles ul li .articleContainer:hover .article h3, .articles ul li .articleContainer:hover .article .articleDate {
+          background-color: rgba(255, 255, 255, 0.7);
+          color: #000000; }
+          .articles ul li .articleContainer:hover .article h3, .articles ul li .articleContainer a:focus .article h3, .articles ul li .articleContainer:hover .article .articleDate, .articles ul li .articleContainer a:focus .article .articleDate {
             max-height: 100%;
             opacity: 1; }
-          .articles ul li .articleContainer:hover .article h3 {
+          .articles ul li .articleContainer:hover .article h3, .articles ul li .articleContainer a:focus .article h3 {
             margin-bottom: 0.8rem; }
-          .articles ul li .articleContainer:hover .article .articleDate {
+          .articles ul li .articleContainer:hover .article .articleDate, .articles ul li .articleContainer a:focus .article .articleDate {
             margin-bottom: 1.5rem; }
 
 footer {
@@ -368,9 +369,9 @@ customize the select element of index.html
 .optionContainer {
   position: relative; }
   .optionContainer:focus, .optionContainer:hover {
-    background-color: white; }
+    background-color: #ffffff; }
     .optionContainer:focus .optionText, .optionContainer:hover .optionText {
-      color: black; }
+      color: #000000; }
   .optionContainer::after {
     position: absolute;
     bottom: 0;

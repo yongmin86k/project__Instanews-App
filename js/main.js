@@ -16,6 +16,15 @@ $(function () {
 
  }) // end of document ready
 
+
+ 
+/*****************
+
+Lists of functions
+
+******************/
+
+
  // synchronize html select elements and custome select elements
 function syncSelect(selectedSection, $base, $customSelect){
 
