@@ -7,11 +7,22 @@ $(function () {
     const $customSelect = $('.selectDefaultBox');
     const $optWrapper = $('.selectContainer');
     
-    $optWrapper.on('click', '.optionContainer', function(){
-        // synchronize html select elements and custome select elements
-        const txtOption = $(this).text().trim().toLowerCase();
-        $base.children().filter(function(index, value){
-            const txtBase = $(value).val();
+    // functions when a custom option is selected
+    $optWrapper.on('click keyup', '.optionContainer', function(e){
+        if (e.type === 'click' || (e.type ==='keyup' && e.keyCode === 13)){
+            syncSelect($(this), $base, $customSelect);
+        }
+    } );
+
+ }) // end of document ready
+
+ // synchronize html select elements and custome select elements
+function syncSelect(selectedSection, $base, $customSelect){
+
+    const txtOption = selectedSection.text().trim().toLowerCase();
+
+    $base.children().filter(function(index, value){
+        const txtBase = $(value).val();
             if (txtBase.indexOf(txtOption) >= 0){
                 $base.children().eq(index).prop('selected', true);
                 $customSelect.text( $(value).text() );
@@ -19,9 +30,8 @@ $(function () {
                 loadContents(txtBase, $('#jsCustomSelect').parents('.menu'));
             }
         }); 
-    });
+}
 
- }) // end of document ready
 
 // get Data from NY Times API
 function loadContents(section, $page) { 
@@ -49,35 +59,27 @@ function loadContents(section, $page) {
         dataType: 'json'
     }).always(function(){
         // Show the pre-loader during fetching the data
-        $articleList.html('');
         $loader.fadeIn(aniTime);
         $articleList.prop('class', '');
-        $('.page').addClass('blur');
+        $article.addClass('blurred');
     })
     .fail(function(){
         // Hide the pre-loader
         // Show the fail message
         setTimeout(function () {
-            $('.page').removeClass('blur');
             $loader.fadeOut(aniTime);
-
             resizeMenuHeight($page, aniTime);
-
-            $articleList.append(failText);
-            $article.fadeIn(aniTime);
+            $articleList.html('').append(failText);
         }, aniTime * 2);
     })
     .done(function (data) { 
         // Hide the pre-loader
         // Show the articles relevant to the keyword
         setTimeout(function () {
-            $('.page').removeClass('blur');
             $loader.fadeOut(aniTime);
-            
             resizeMenuHeight($page, aniTime);
-
-            $article.fadeIn(aniTime);
-            $articleList.addClass(section);
+            $article.removeClass('blurred').fadeIn(aniTime);
+            $articleList.html('').addClass(section);
             insertArticles(data.results, $articleList);
         }, aniTime * 2);  
     });
@@ -92,6 +94,7 @@ function insertArticles(data, $articleList) {
     const isImages = data.filter(function(image){
         return image.multimedia.length !== 0;
     })
+    
     $.each(isImages, function(index, value){
         const linkURL = value.url,
             imageURL = $(value.multimedia).last()[0].url,

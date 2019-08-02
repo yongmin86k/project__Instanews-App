@@ -71,6 +71,11 @@ table {
   opacity: 0;
   overflow: hidden; }
 
+.selectDefaultBox:focus, .selectDefaultBox:hover, .optionContainer:focus, .optionContainer:hover {
+  outline: none;
+  -webkit-box-shadow: 0 0 8px 8px rgba(32, 102, 255, 0.8);
+          box-shadow: 0 0 8px 8px rgba(32, 102, 255, 0.8); }
+
 @font-face {
   font-family: 'Open Sans';
   src: url("/fonts/OpenSans-Light.woff2") format("woff2"), url("/fonts/OpenSans-Light.woff") format("woff");
@@ -133,12 +138,9 @@ img {
             justify-content: left;
     padding-left: 10vw; } }
 
-.menu .blur {
-  -webkit-filter: blur(10px);
-          filter: blur(10px); }
-
 .menu .nytLogo {
   width: auto;
+  max-width: 80vw;
   height: 40%; }
 
 .menu .menuContainer {
@@ -159,6 +161,9 @@ img {
 .articles {
   display: none;
   height: initial; }
+  .articles.blurred {
+    -webkit-filter: blur(10px);
+            filter: blur(10px); }
   .articles .failMessage {
     padding: 1rem;
     text-align: center;
@@ -237,8 +242,12 @@ img {
             -webkit-text-decoration: underline #c2c2c2;
                     text-decoration: underline #c2c2c2; }
         .articles ul li .articleContainer:hover .bgImgage {
-          -webkit-transform: scale(1.5);
-                  transform: scale(1.5); }
+          -webkit-transform: scale(1.2);
+                  transform: scale(1.2); }
+          @media only screen and (min-width: 1000px) {
+            .articles ul li .articleContainer:hover .bgImgage {
+              -webkit-transform: scale(1.5);
+                      transform: scale(1.5); } }
         .articles ul li .articleContainer:hover .article {
           min-height: 100%;
           background-color: rgba(0, 0, 0, 0.72); }
@@ -322,7 +331,10 @@ customize the select element of index.html
   width: 100%;
   min-width: 120px;
   font-size: 0.8rem;
-  border-radius: 0.25rem; }
+  border-radius: 0.25rem;
+  -webkit-transition: .3s;
+  transition: .3s;
+  cursor: pointer; }
 
 .selectDefaultBox {
   position: relative;
@@ -338,14 +350,10 @@ customize the select element of index.html
   background-color: #ffffff;
   color: #000000;
   padding: 0.8rem 0.6rem; }
-
-.selectDefaultBox::after {
-  position: relative;
-  content: '\f078';
-  font-family: 'FontAwesome'; }
-
-.selectDefaultBox, .optionText {
-  cursor: pointer; }
+  .selectDefaultBox::after {
+    position: relative;
+    content: '\f078';
+    font-family: 'FontAwesome'; }
 
 .selectContainer {
   visibility: hidden;
@@ -353,30 +361,31 @@ customize the select element of index.html
   background: rgba(0, 0, 0, 0.92);
   -webkit-box-shadow: 0 0 48px rgba(255, 255, 255, 0.5);
           box-shadow: 0 0 48px rgba(255, 255, 255, 0.5); }
-
-.selectContainer.show {
-  z-index: 100;
-  visibility: visible; }
+  .selectContainer.show {
+    z-index: 100;
+    visibility: visible; }
 
 .optionContainer {
   position: relative; }
-
-.optionContainer::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 100%;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.3); }
-
-.optionContainer:last-child::after {
-  display: none; }
-
-.optionContainer a {
-  text-decoration: none; }
-
-.optionText {
-  font-size: 0.8rem;
-  padding: 0.8rem 0.6rem;
-  color: #ffffff; }
+  .optionContainer:focus, .optionContainer:hover {
+    background-color: white; }
+    .optionContainer:focus .optionText, .optionContainer:hover .optionText {
+      color: black; }
+  .optionContainer::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3); }
+  .optionContainer:first-child {
+    border-radius: .25rem .25rem 0 0; }
+  .optionContainer:last-child {
+    border-radius: 0 0 .25rem .25rem; }
+    .optionContainer:last-child::after {
+      display: none; }
+  .optionContainer .optionText {
+    font-size: 0.8rem;
+    padding: 0.8rem 0.6rem;
+    color: #ffffff; }

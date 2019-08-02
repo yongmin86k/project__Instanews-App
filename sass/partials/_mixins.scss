@@ -32,3 +32,8 @@
     opacity: 0;
     overflow: hidden;
 }
+
+%focusBox {
+    outline: none;
+    box-shadow: 0 0 8px 8px $color-focus-blue;
+}
