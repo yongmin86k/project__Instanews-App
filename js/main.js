@@ -14,6 +14,14 @@ $(function () {
         }
     } );
 
+    // refresh the page
+    const $refreshPage = $('#refreshPage');
+    $refreshPage.on('keyup', function(e){
+        if (e.keyCode === 13){
+            location.reload();
+        }
+    });
+
  }) // end of document ready
 
 
@@ -112,16 +120,16 @@ function insertArticles(data, $articleList) {
             abstract = value.abstract;
         const $article = `
                         <li>
-                            <div class="articleContainer">
+                            <article class="articleContainer">
                                 <a href="${linkURL}" target="_blank">
                                     <div class="bgImgage" style="background-image: url('${imageURL}')"></div>
                                     <div class="article">
-                                        <h3>${title}</h3>
+                                        <h2>${title}</h2>
                                         <p class="articleDate">${updatedDate}</p>
                                         <p class="abstract">${abstract}</p>
                                     </div>
                                 </a>
-                            </div>
+                            </article>
                         </li>
                         `
 
