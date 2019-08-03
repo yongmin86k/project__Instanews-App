@@ -17,7 +17,7 @@ $(function () {
  }) // end of document ready
 
 
- 
+
 /*****************
 
 Lists of functions
@@ -58,7 +58,7 @@ function loadContents(section, $page) {
     
     // Prevent calling ajax function twice if the keyword is same
     if ( $articleList.hasClass(section) ) {
-        console.error('Choosed the same section');
+        $('.popUp').slideToggle(500).delay(800).slideToggle(500);
         return
     }
 

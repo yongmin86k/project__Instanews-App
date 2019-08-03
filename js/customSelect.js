@@ -2,17 +2,15 @@ export default function CustomSelect() {
 
 let openOptions = false;
 
-// $(function(){
-    // Create a custom selectbox from #jsCustomSelect
-    const $customSelect = $('#jsCustomSelect');
-    const defaultText = 'Sections...';
-    const dafaultSelectBox = `
-        <div class="selectDefaultBox" tabindex="0">${defaultText}</div>
-        <div class="selectContainer animated"></div>`;
-    $customSelect.after(dafaultSelectBox);
-    
-    customizeSelect($customSelect);
-// });
+// Create a custom selectbox from #jsCustomSelect
+const $customSelect = $('#jsCustomSelect');
+const defaultText = 'Sections...';
+const dafaultSelectBox = `
+    <div class="selectDefaultBox" tabindex="0">${defaultText}</div>
+    <div class="selectContainer animated"></div>`;
+$customSelect.after(dafaultSelectBox);
+
+customizeSelect($customSelect);
 
 // Create custom options from #jsCustomSelect
 function customizeSelect(element){
@@ -69,7 +67,8 @@ function rePositionSelect($ele, $parentEle, topPosition, bottomPosition){
 
 // Toggle the option container
 function clickSelect($ele, $object){
-    //  toggle the container when it's clicked
+    
+    //  toggle the option container when it's clicked
     $(window).on('click', function(e){
         if (openOptions === false && e.target ===  $object[0] ) {
             showOptions($ele);
@@ -79,11 +78,14 @@ function clickSelect($ele, $object){
     });
 
     $(window).on('keyup', function(e){
-        // show the container when it's focused
+        // show the option container when it's focused
         if ( e.target === $object[0] ){
             showOptions($ele);
         } else if( 
+        // hide the option container when key of 'enter' or 'esc' is pressed
+        // or hide the option container is focused out
             (e.keyCode === 13 && $(e.target).hasClass('optionContainer')) ||
+            (e.keyCode === 27 && $(e.target).hasClass('optionContainer')) ||
             (openOptions === true && !$(e.target).hasClass('optionContainer')) 
             ) { 
             hideOptions($ele);

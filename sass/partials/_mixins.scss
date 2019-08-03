@@ -15,13 +15,17 @@
     padding-left: 10vw;
 }
 
+%flexCeCe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 %pageDefault {
     width: 100vw; 
     height:90vh;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend %flexCeCe;
     flex-direction: column;
 }
 
@@ -37,4 +41,12 @@
 %focusBox {
     outline: none;
     box-shadow: 0 0 8px 8px $color-focus-blue;
+}
+
+%fixedFullPage {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0,0.48);
 }

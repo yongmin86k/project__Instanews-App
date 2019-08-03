@@ -44,7 +44,7 @@ img {
             }
         }
     }       
-}
+} // end of .menu
     
 // CSS :: articles
 .articles {
@@ -154,15 +154,13 @@ img {
             }
         }
     }
-}
+} // end of .articles
 
 // CSS :: footer
 footer {
     width: 100%;
     height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend %flexCeCe;
     color: $color-medium-grey;
     @include desktop {
         @include desktopSectionLayout;
@@ -175,17 +173,11 @@ footer {
 // CSS :: loader
 .loader {
     display: none;
-    width: 100vw;
-    height: 100vh;
-    left: 0; top: 0;
-    position: fixed;
-    background-color: rgba(0,0,0,0.48);
+    @extend %fixedFullPage;
 
     .loadContents {
-        display: flex;
         width: 100%; height: 100%;
-        align-items: center;
-        justify-content: center;
+        @extend %flexCeCe;
         flex-direction: column;
 
         .loadSpinner {
@@ -205,13 +197,50 @@ footer {
         }
     }
         
-}
+} // end of .loader
     
+// CSS :: pop up
 
+.popUp {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    left: 0; bottom:0;
+
+    &__contents {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: $color-main-font;
+        color: $color-main-bg;
+        @extend %flexCeCe;
+        font-size: 1rem;
+        font-weight: bold;
+            
+        i {
+            font-size: 1.5rem;
+            color: $color-wrn-red;
+            margin-right: 0.5rem;
+        }
+        p {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top:0; left: 0;
+            width: 100%; height: 1px;
+            background-color: $color-medium-grey;
+        }
+    }
+}
         
 /*
-CSS :: customSelect.js
-customize the select element of index.html
+    CSS :: customSelect.js
+    customize the select element of index.html
 */
 .customSelect { display: none; }
 
@@ -223,6 +252,7 @@ customize the select element of index.html
     transition: .3s;
     cursor: pointer;
 }
+
 .selectDefaultBox { 
     position: relative;
     display: flex;
@@ -240,7 +270,7 @@ customize the select element of index.html
         content: '\f078';
         font-family: 'FontAwesome';
     }
-}
+} // end of .selectDefaultBox
 
 .selectContainer {
     visibility: hidden;
@@ -252,7 +282,6 @@ customize the select element of index.html
         z-index: 100;
         visibility: visible;
     }
-}
     .optionContainer { 
         position: relative;
         &:focus, &:hover {
@@ -286,4 +315,4 @@ customize the select element of index.html
             color: $color-main-font;
         }
     }
-            
+} // end of .selectContainer

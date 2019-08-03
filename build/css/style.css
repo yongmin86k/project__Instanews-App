@@ -45,10 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-.menu, .articles {
-  width: 100vw;
-  height: 90vh;
-  position: relative;
+.menu, .articles, footer, .loader .loadContents, .popUp__contents {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,7 +54,12 @@ table {
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+          justify-content: center; }
+
+.menu, .articles {
+  width: 100vw;
+  height: 90vh;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -72,10 +74,18 @@ table {
   opacity: 0;
   overflow: hidden; }
 
-.selectDefaultBox:focus, .selectDefaultBox:hover, .optionContainer:focus, .optionContainer:hover {
+.selectDefaultBox:focus, .selectDefaultBox:hover, .selectContainer .optionContainer:focus, .selectContainer .optionContainer:hover {
   outline: none;
   -webkit-box-shadow: 0 0 8px 8px rgba(32, 102, 255, 0.8);
           box-shadow: 0 0 8px 8px rgba(32, 102, 255, 0.8); }
+
+.loader {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.48); }
 
 @font-face {
   font-family: 'Open Sans';
@@ -263,15 +273,6 @@ img {
 footer {
   width: 100%;
   height: 10vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   color: #c2c2c2; }
   @media only screen and (min-width: 1000px) {
     footer {
@@ -284,25 +285,10 @@ footer {
   text-transform: uppercase; }
 
 .loader {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  left: 0;
-  top: 0;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.48); }
+  display: none; }
   .loader .loadContents {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     width: 100%;
     height: 100%;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -321,9 +307,41 @@ footer {
           margin-top: 1rem;
           font-size: 1.5rem; } }
 
+.popUp {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  left: 0;
+  bottom: 0; }
+  .popUp__contents {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold; }
+    .popUp__contents i {
+      font-size: 1.5rem;
+      color: #ff2020cc;
+      margin-right: 0.5rem; }
+    .popUp__contents p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .popUp__contents::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #c2c2c2; }
+
 /*
-CSS :: customSelect.js
-customize the select element of index.html
+    CSS :: customSelect.js
+    customize the select element of index.html
 */
 .customSelect {
   display: none; }
@@ -365,28 +383,27 @@ customize the select element of index.html
   .selectContainer.show {
     z-index: 100;
     visibility: visible; }
-
-.optionContainer {
-  position: relative; }
-  .optionContainer:focus, .optionContainer:hover {
-    background-color: #ffffff; }
-    .optionContainer:focus .optionText, .optionContainer:hover .optionText {
-      color: #000000; }
-  .optionContainer::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: '';
-    width: 100%;
-    height: 1px;
-    background-color: rgba(255, 255, 255, 0.3); }
-  .optionContainer:first-child {
-    border-radius: .25rem .25rem 0 0; }
-  .optionContainer:last-child {
-    border-radius: 0 0 .25rem .25rem; }
-    .optionContainer:last-child::after {
-      display: none; }
-  .optionContainer .optionText {
-    font-size: 0.8rem;
-    padding: 0.8rem 0.6rem;
-    color: #ffffff; }
+  .selectContainer .optionContainer {
+    position: relative; }
+    .selectContainer .optionContainer:focus, .selectContainer .optionContainer:hover {
+      background-color: #ffffff; }
+      .selectContainer .optionContainer:focus .optionText, .selectContainer .optionContainer:hover .optionText {
+        color: #000000; }
+    .selectContainer .optionContainer::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3); }
+    .selectContainer .optionContainer:first-child {
+      border-radius: .25rem .25rem 0 0; }
+    .selectContainer .optionContainer:last-child {
+      border-radius: 0 0 .25rem .25rem; }
+      .selectContainer .optionContainer:last-child::after {
+        display: none; }
+    .selectContainer .optionContainer .optionText {
+      font-size: 0.8rem;
+      padding: 0.8rem 0.6rem;
+      color: #ffffff; }
