@@ -118,11 +118,11 @@ I am using gulp to compile SASS, and to concatenate and minify Stylesheets and J
 **1. Accessibility** : Allow the keyboard to navitage the site.
 
 ![Preview](images/_preview/preview_instanews_1.jpg)
-- Press `Tab` key to navigate the site, `Enter` key to select the option from the select menu and `Esc` key to close the opened select menu.
+- Press `Tab` key to navigate the site, `Enter` key to select the option from the select menu, and `Esc` key to close the opened select menu.
 
-- The select element is highlighted in blue when focused or hovered. Also the selected article shows white backgrounds with the title and date.
+- The select element is highlighted in blue when focused or hovered. Also the selected article shows in the white background with the title and date.
 
-- The first focused element is `refreshing the page`.
+- The first focused element is for `refreshing the page`.
 
 &nbsp;
 
@@ -133,7 +133,7 @@ I am using gulp to compile SASS, and to concatenate and minify Stylesheets and J
 
 &nbsp;
 
-**3. Warning box** : If same section is chosen show the warning box and prevent from calling same data.
+**3. Warning box** : If same section is chosen, display the warning box at the bottom and prevent from calling same data.
 
 ![Preview](images/_preview/preview_instanews_3.jpg)
 
