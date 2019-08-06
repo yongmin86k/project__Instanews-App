@@ -9,8 +9,7 @@ $(function () {
 
         // functions after the option is selected  
         afterSelected: function(){
-            const sectionText = $('#hiddenInput').val();
-            loadContents(sectionText, $('#jsCustomSelect').parents('.menu'));         
+            loadContents();         
         }
     });
 
@@ -35,13 +34,15 @@ Lists of functions
 
 
 // get Data from NY Times API
-function loadContents(section, $page) { 
-    const $key = 'EQeAuLeMpzQaAkBUPv7Oo4stxW15SdZK';
-    const $url = `https://api.nytimes.com/svc/topstories/v2/${section}.json?api-key=${$key}`;
-    const $article = $('.articles');
-    const $articleList = $('.articles').children('ul');
-    const $loader = $('.loader');
-    const failText = `
+function loadContents() { 
+    const $section = $('#hiddenInput').val(),
+          $page = $('#jsCustomSelect').parents('.menu'),
+          $key = 'EQeAuLeMpzQaAkBUPv7Oo4stxW15SdZK',
+          $url = `https://api.nytimes.com/svc/topstories/v2/${$section}.json?api-key=${$key}`,
+          $article = $('.articles'),
+          $articleList = $('.articles').children('ul'),
+          $loader = $('.loader'),
+          failText = `
                     <li class="failMessage">
                         <i class="fas fa-exclamation-triangle"></i>
                         Oops, something went wrong.<br> Please refresh the page.
@@ -49,7 +50,7 @@ function loadContents(section, $page) {
     let aniTime = 500;
     
     // Prevent calling ajax function twice if the keyword is same
-    if ( $articleList.hasClass(section) ) {
+    if ( $articleList.hasClass($section) ) {
         $('.popUp').slideToggle(aniTime).delay(aniTime+300).slideToggle(aniTime);
         return
     }
@@ -80,7 +81,7 @@ function loadContents(section, $page) {
             $loader.fadeOut(aniTime);
             resizeMenuHeight($page, aniTime);
             $article.removeClass('blurred').fadeIn(aniTime);
-            $articleList.html('').addClass(section);
+            $articleList.html('').addClass($section);
             insertArticles(data.results, $articleList);
         }, aniTime * 2);  
     });

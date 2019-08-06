@@ -50,15 +50,15 @@ customizeSelect($customSelect);
         syncCustomOptions($ele, $base, $object);
     }
 
-    // Calculate the top position of the custom select box
-    function getTopPos($object) { 
-        return $object.position().top
-    }
+        // Calculate the top position of the custom select box
+        function getTopPos($object) { 
+            return $object.position().top
+        }
 
-    // Calculate the bottom position of the custom select box
-    function getBottomPos($base, $object){
-        return $base.outerHeight() - ($object.position().top + $object.outerHeight())
-    }
+        // Calculate the bottom position of the custom select box
+        function getBottomPos($base, $object){
+            return $base.outerHeight() - ($object.position().top + $object.outerHeight())
+        }
 
     // Reposition the option container
     function rePositionSelect($ele, $parentEle, topPosition, bottomPosition){
@@ -93,9 +93,11 @@ customizeSelect($customSelect);
             // show the option container when it's focused
             if ( e.target === $object[0] ){
                 showOptions($ele);
+                
             } else if( 
-            // hide the option container when key of 'enter' or 'esc' is pressed
-            // or hide the option container is focused out
+            // hide the option container when 'enter' or 'esc' is pressed
+            // or 
+            // hide the option container when it is focused out
                 (e.keyCode === 13 && $(e.target).hasClass('optionContainer')) ||
                 (e.keyCode === 27 && $(e.target).hasClass('optionContainer')) ||
                 (openOptions === true && !$(e.target).hasClass('optionContainer')) 
