@@ -1,18 +1,19 @@
 import CustomSelect from './customSelect';
 
-CustomSelect();
-
 $(function () {
-    const $base = $('#jsCustomSelect');
-    const $customSelect = $('.selectDefaultBox');
-    const $optWrapper = $('.selectContainer');
-    
-    // functions when a custom option is selected
-    $optWrapper.on('click keyup', '.optionContainer', function(e){
-        if (e.type === 'click' || (e.type ==='keyup' && e.keyCode === 13)){
-            syncSelect($(this), $base, $customSelect);
+
+    // initiate CustomSelect javascript library
+    CustomSelect({
+        selectElementID: '#jsCustomSelect',
+        returnValue: true, // returns value to #hiddenInput when an option is selected
+
+        // functions after the option is selected  
+        afterSelected: function(){
+            const sectionText = $('#hiddenInput').val();
+            loadContents(sectionText, $('#jsCustomSelect').parents('.menu'));         
         }
-    } );
+    });
+
 
     // refresh the page
     const $refreshPage = $('#refreshPage');
@@ -33,23 +34,6 @@ Lists of functions
 ******************/
 
 
- // synchronize html select elements and custome select elements
-function syncSelect(selectedSection, $base, $customSelect){
-
-    const txtOption = selectedSection.text().trim().toLowerCase();
-
-    $base.children().filter(function(index, value){
-        const txtBase = $(value).val();
-            if (txtBase.indexOf(txtOption) >= 0){
-                $base.children().eq(index).prop('selected', true);
-                $customSelect.text( $(value).text() );
-
-                loadContents(txtBase, $('#jsCustomSelect').parents('.menu'));
-            }
-        }); 
-}
-
-
 // get Data from NY Times API
 function loadContents(section, $page) { 
     const $key = 'EQeAuLeMpzQaAkBUPv7Oo4stxW15SdZK';
@@ -66,7 +50,7 @@ function loadContents(section, $page) {
     
     // Prevent calling ajax function twice if the keyword is same
     if ( $articleList.hasClass(section) ) {
-        $('.popUp').slideToggle(500).delay(800).slideToggle(500);
+        $('.popUp').slideToggle(aniTime).delay(aniTime+300).slideToggle(aniTime);
         return
     }
 
